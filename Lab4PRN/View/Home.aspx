@@ -83,7 +83,7 @@
             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
             <br />
             <br />
-            <asp:GridView ID="tableTicket" runat="server" EmptyDataText="No data found!"
+            <asp:GridView ID="tableTicket" runat="server" EmptyDataText="None result"
                 CssClass="auto-style2" Width="1057px" AutoGenerateColumns="False"
                 ViewStateMode="Enabled" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" EnableModelValidation="True" ForeColor="Black">
                 <Columns>

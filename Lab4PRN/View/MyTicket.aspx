@@ -37,7 +37,7 @@
             <asp:Label ID="lb_message" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:GridView ID="gridViewTicketBooked" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" EnableModelValidation="True" ForeColor="Black" AutoGenerateColumns="False" EmptyDataText="No result">
+            <asp:GridView ID="gridViewTicketBooked" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" EnableModelValidation="True" ForeColor="Black" AutoGenerateColumns="False" EmptyDataText="None result">
                 <FooterStyle BackColor="#CCCCCC" />
                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
