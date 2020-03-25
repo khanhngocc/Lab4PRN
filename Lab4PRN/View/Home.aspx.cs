@@ -45,10 +45,7 @@ namespace Lab4PRN.View
                     
                         loadData();
                         LoadPageNumber();
-                    
-                  
-
-                }
+                 }
                 else
                 {
                     Response.Redirect("Entry.aspx");

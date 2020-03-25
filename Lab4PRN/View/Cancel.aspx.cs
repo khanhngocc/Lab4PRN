@@ -18,6 +18,7 @@ namespace Lab4PRN.View
             int flight_id = Int32.Parse(Request.QueryString["fid"].ToString());
             List<int> list_temp = (List<int>)Session["all_ticket"];
             list_temp.Remove(flight_id);
+            Session["all_ticket"] = list_temp;
             Label1.Text = "Cancel successfully";
 
         }
