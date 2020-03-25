@@ -11,8 +11,47 @@ namespace Lab4PRN.DAO
     public class FlightDAO
     {
         DBContext dBContext = new DBContext();
-        public List<Flight> SearchFlight(Flight flight)
+
+        public int GetRowCountFilterFlight(Flight flight)
         {
+            int num = 0;
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Count(*) from Flight,Airplane,Owner_Flight"
+                          + " where"
+                          + " Flight.id = Owner_Flight.flight_id"
+                          + " and"
+                          + " Airplane.id = Owner_Flight.airplane_id"
+                          + " and"
+                          + " Flight.id not in (Select Booking.flight_id from Booking)"
+                          + " and"
+                          + " depart_date = @val1"
+                          + " and"
+                          + " arrival_date = @val2"
+                          + " and"
+                          + " depart_country = @val3"
+                          + " and"
+                          + " arrival_country = @val4"
+            ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            command.Parameters.AddWithValue("@val1", flight.Depart_date);
+            command.Parameters.AddWithValue("@val2", flight.Arrival_date);
+            command.Parameters.AddWithValue("@val3", flight.Depart_country);
+            command.Parameters.AddWithValue("@val4", flight.Arrival_country);
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                num = reader.GetInt32(0);
+            }
+
+            cnn.Close();
+            return num;
+        }
+
+
+        public List<Flight> SearchFlight(Flight flight, int pageIndex, int pageSize)
+        {
+            int indexOfFirstRecord = (pageIndex - 1) * pageSize;
             List<Flight> flights = new List<Flight>();
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
@@ -30,12 +69,17 @@ namespace Lab4PRN.DAO
                           + " and"
                           + " depart_country = @val3"
                           + " and"
-                          + " arrival_country = @val4";
+                          + " arrival_country = @val4"
+                          + " Order by Flight.id"
+                          + " OFFSET @val5 ROW"
+                          + " FETCH NEXT @val6 ROW ONLY";
             SqlCommand command = new SqlCommand(query, cnn);
             command.Parameters.AddWithValue("@val1", flight.Depart_date);
             command.Parameters.AddWithValue("@val2", flight.Arrival_date);
             command.Parameters.AddWithValue("@val3", flight.Depart_country);
             command.Parameters.AddWithValue("@val4", flight.Arrival_country);
+            command.Parameters.AddWithValue("@val5",indexOfFirstRecord);
+            command.Parameters.AddWithValue("@val6",pageSize);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -52,15 +96,43 @@ namespace Lab4PRN.DAO
                 temp.Price = reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Flight_name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
                 flights.Add(temp);
             }
             cnn.Close();
             return flights;
 
         }
-        public List<Flight> GetAllFlight()
+
+        public int GetRowCountAllFlight()
         {
+            int num = 0;
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Count(*) from Flight,Airplane,Owner_Flight"
+                          + " where"
+                          + " Flight.id = Owner_Flight.flight_id"
+                          + " and"
+                          + " Airplane.id = Owner_Flight.airplane_id"
+                          + " and"
+                          + " Flight.id not in (Select Booking.flight_id from Booking)"
+                         
+            ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                num = reader.GetInt32(0);
+            }
+
+            cnn.Close();
+            return num;
+        }
+
+        public List<Flight> GetAllFlight(int pageIndex, int pageSize)
+        {
+            int indexOfFirstRecord = (pageIndex - 1) * pageSize;
             List<Flight> flights = new List<Flight>();
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
@@ -71,10 +143,14 @@ namespace Lab4PRN.DAO
                           + " Airplane.id = Owner_Flight.airplane_id"
                           + " and"
                           + " Flight.id not in (Select Booking.flight_id from Booking)"
+                          + " Order by Flight.id"
+                          + " OFFSET @val1 ROW"
+                          + " FETCH NEXT @val2 ROW ONLY"
                           ;
                         
             SqlCommand command = new SqlCommand(query, cnn);
-           
+            command.Parameters.AddWithValue("@val1",indexOfFirstRecord);
+            command.Parameters.AddWithValue("@val2",pageSize);
             SqlDataReader reader = command.ExecuteReader();
             while(reader.Read())
             {
@@ -91,7 +167,8 @@ namespace Lab4PRN.DAO
                 temp.Price = reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Flight_name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
                 flights.Add(temp);
             }
             cnn.Close();
@@ -133,8 +210,9 @@ namespace Lab4PRN.DAO
                 temp.Price = reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Flight_name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
-                temp.DateTime_booked = reader.GetDateTime(13);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
+                temp.DateTime_booked = reader.GetDateTime(14);
                 flights.Add(temp);
             }
             cnn.Close();
@@ -174,8 +252,9 @@ namespace Lab4PRN.DAO
                 temp.Price = reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Flight_name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
-                
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
+
             }
             cnn.Close();
             return temp;

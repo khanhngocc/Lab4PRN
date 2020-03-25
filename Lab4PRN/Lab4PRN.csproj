@@ -67,12 +67,14 @@
     <Content Include="View\Home.aspx" />
     <Content Include="View\MyTicket.aspx" />
     <Content Include="View\Payment.aspx" />
+    <Content Include="View\SignUp.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BookingDAO.cs" />
     <Compile Include="DAO\FlightDAO.cs" />
+    <Compile Include="DAO\PassangerDAO.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Flight.cs" />
     <Compile Include="Entity\Passanger.cs" />
@@ -119,6 +121,13 @@
     </Compile>
     <Compile Include="View\Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

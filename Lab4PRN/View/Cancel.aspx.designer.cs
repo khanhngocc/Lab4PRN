@@ -24,13 +24,13 @@ namespace Lab4PRN.View
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// linkMyTicket control.
+        /// linkPayment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkMyTicket;
+        protected global::System.Web.UI.WebControls.LinkButton linkPayment;
 
         /// <summary>
         /// Label1 control.

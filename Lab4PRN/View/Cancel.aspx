@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
-<head runat="server">
+<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +30,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container col-11">
-            <asp:LinkButton ID="linkMyTicket" runat="server" CssClass="background_header" OnClick="linkMyTicket_Click"><i class="fa fa-ticket" aria-hidden="true"></i> My Ticket</asp:LinkButton>
+            <asp:LinkButton ID="linkPayment" runat="server" CssClass="background_header" OnClick="linkPayment_Click"><i class="fa fa-money" aria-hidden="true"></i> Payment</asp:LinkButton>
              <p>
                  &nbsp;</p>
             <p>

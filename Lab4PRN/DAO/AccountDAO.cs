@@ -12,6 +12,25 @@ namespace Lab4PRN.DAO
     {
         DBContext dBContext = new DBContext();
 
+
+ 
+
+        public void insertAccount(int passanger_id,Account account)
+        {
+
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Insert into Account values(@val1,@val2,@val3)";
+            SqlCommand command = new SqlCommand(query, cnn);
+            command.Parameters.AddWithValue("@val1", account.Username);
+            command.Parameters.AddWithValue("@val2", account.Password);
+            command.Parameters.AddWithValue("@val3", passanger_id);
+            command.ExecuteNonQuery();
+
+
+        }
+
+
         public bool IsExistedAccount(Account account)
         {
            

@@ -11,19 +11,20 @@ namespace Lab4PRN.View
 {
     public partial class Cancel : System.Web.UI.Page
     {
-        BookingDAO bookingDAO = new BookingDAO();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account account = (Account)Session["account"];
+           
             int flight_id = Int32.Parse(Request.QueryString["fid"].ToString());
-            bookingDAO.deleteBooking(account.Id,flight_id);
+            List<int> list_temp = (List<int>)Session["all_ticket"];
+            list_temp.Remove(flight_id);
             Label1.Text = "Cancel successfully";
 
         }
 
-        protected void linkMyTicket_Click(object sender, EventArgs e)
+        protected void linkPayment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MyTicket.aspx");
+            Response.Redirect("Payment.aspx");
         }
     }
 }

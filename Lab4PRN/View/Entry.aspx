@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
-<head runat="server">
+<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +29,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container col-4 agile_block">
+
             <div class="jumbotron">
                 <h1>Booking Flight <i class="fa fa-plane" aria-hidden="true"></i></h1>
                 <p>Enjoy the trip</p>
@@ -41,6 +42,11 @@
                 <asp:Label ID="Label2" runat="server" Text="PassWord"></asp:Label>
                 <asp:TextBox ID="txtpass" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
             </div>
+            <br />
+            <asp:LinkButton ID="linkSignUp" runat="server" OnClick="linkSignUp_Click">Sign up <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </asp:LinkButton>
+            <br />
+            <br />
             <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" CssClass="btn btn-primary" />
             <br />
             <br />

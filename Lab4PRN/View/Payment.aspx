@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
-<head runat="server">
+<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,10 @@
                     <asp:BoundField HeaderText="price" DataField="price" />
                     <asp:BoundField HeaderText="no_seat" DataField="no_seat" />
                     <asp:BoundField HeaderText="flight_name" DataField="flight_name" />
+                     <asp:BoundField HeaderText="airway_station" DataField="airway_station" />
                     <asp:BoundField HeaderText="airplane_name" DataField="airplane_name" />
+                    <asp:HyperLinkField HeaderText="Cancel" Text="Cancel" DataNavigateUrlFormatString="Cancel.aspx?fid={0}"
+                     DataNavigateUrlFields="id" />
                 </Columns>
                 <FooterStyle BackColor="#CCCCCC" />
                 <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

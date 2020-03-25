@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
-<head runat="server">
+<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,6 +99,7 @@
                     <asp:BoundField HeaderText="price" DataField="price" />
                     <asp:BoundField HeaderText="no_seat" DataField="no_seat" />
                     <asp:BoundField HeaderText="flight_name" DataField="flight_name" />
+                    <asp:BoundField HeaderText="airway_station" DataField="airway_station" />
                     <asp:BoundField HeaderText="airplane_name" DataField="airplane_name" />
                     <asp:HyperLinkField HeaderText="Booking" Text="Book" DataNavigateUrlFormatString="Book.aspx?fid={0}&fname={1}&aname={2}"
                         DataNavigateUrlFields="id,flight_name,airplane_name" />
@@ -110,6 +111,13 @@
                 <RowStyle BackColor="White" />
                 <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             </asp:GridView>
+            <div>
+                <br />
+            <asp:Label ID="Label5" runat="server" Text="Choose a specific page: "></asp:Label>
+            <asp:DropDownList ID="pageNumberList" runat="server"
+                AutoPostBack="true" Height="39px" OnSelectedIndexChanged="pageNumberList_SelectedIndexChanged" Width="169px">
+            </asp:DropDownList>
+           </div>
             <div class="jumbotron brand_footer">
                 <p class="agile_footer_text"><i class="fa fa-copyright" aria-hidden="true"></i>2020: bookinginternalflight.com</p>
             </div>

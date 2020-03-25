@@ -38,5 +38,12 @@ namespace Lab4PRN.View
                 lb_message.Text = "Login Fail";
             }
         }
+
+      
+
+        protected void linkSignUp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SignUp.aspx");
+        }
     }
 }

@@ -36,32 +36,49 @@ namespace Lab4PRN.View
 
                 if (Session["all_ticket"] != null)
                 {
-                    btnPay.Enabled = true;
-                    txt_feed_back.Enabled = true;
-                    lb_message.Text = "Your ticket";
+                   
                     List<int> list_temp = (List<int>)Session["all_ticket"];
-                    double total_money = 0;
-                    foreach(int a in list_temp)
+
+                    if (list_temp.Count == 0)
                     {
-                        if(IsExisted(a) == false)
+                        lb_message.Text = "You have no flight to pay";
+                        btnPay.Enabled = false;
+                        txt_feed_back.Enabled = false;
+                    }
+                    else
+                    {
+                        btnPay.Enabled = true;
+                        txt_feed_back.Enabled = true;
+                        lb_message.Text = "Your ticket";
+                        double total_money = 0;
+                        foreach (int a in list_temp)
                         {
-                            Flight temp = flightDAO.GetFlightByID(a);
-                            flights_booked.Add(temp);
-                            total_money += temp.Price;
+                            if (IsExisted(a) == false)
+                            {
+                                Flight temp = flightDAO.GetFlightByID(a);
+                                flights_booked.Add(temp);
+                                total_money += temp.Price;
+                            }
+
                         }
-                       
+
+                        gridFlightBooked.DataSource = flights_booked;
+                        gridFlightBooked.DataBind();
+                        lb_total_money.Text = "Total money: " + total_money + "$";
                     }
 
-                    gridFlightBooked.DataSource = flights_booked;
-                    gridFlightBooked.DataBind();
-                    lb_total_money.Text = "Total money: "+total_money + "$";
+
+                   
                     
                 }
                 else
                 {
-                    lb_message.Text = "You have no flight to pay";
-                    btnPay.Enabled = false;
-                    txt_feed_back.Enabled = false;
+                   
+                        lb_message.Text = "You have no flight to pay";
+                        btnPay.Enabled = false;
+                        txt_feed_back.Enabled = false;
+                    
+                   
                 }
 
             }

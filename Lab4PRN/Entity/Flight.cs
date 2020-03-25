@@ -20,7 +20,9 @@ namespace Lab4PRN.Entity
         private int no_seat;
         private String flight_name;
         private String airplane_name;
+        private String airway_station;
         private DateTime dateTime_booked;
+
         public int Id { get => id; set => id = value; }
         public string Depart_time { get => depart_time; set => depart_time = value; }
         public string Depart_date { get => depart_date; set => depart_date = value; }
@@ -35,5 +37,6 @@ namespace Lab4PRN.Entity
         public string Flight_name { get => flight_name; set => flight_name = value; }
         public string Airplane_name { get => airplane_name; set => airplane_name = value; }
         public DateTime DateTime_booked { get => dateTime_booked; set => dateTime_booked = value; }
+        public string Airway_station { get => airway_station; set => airway_station = value; }
     }
 }

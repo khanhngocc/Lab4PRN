@@ -27,20 +27,7 @@ namespace Lab4PRN.DAO
 
         }
 
-        public void deleteBooking(int account_id, int flight_id)
-        {
-
-            SqlConnection cnn = dBContext.GetConnection();
-            cnn.Open();
-            String query = "Delete from Booking where account_id = @val1 and flight_id = @val2";
-            SqlCommand command = new SqlCommand(query, cnn);
-            command.Parameters.AddWithValue("@val1", account_id);
-            command.Parameters.AddWithValue("@val2", flight_id);
-         
-            command.ExecuteNonQuery();
-
-
-        }
+      
 
         public void insertFeedback(String message,String date,int account_id)
         {
