@@ -49,7 +49,7 @@ namespace Lab4PRN.View
                     {
                         btnPay.Enabled = true;
                         txt_feed_back.Enabled = true;
-                        lb_message.Text = "Your ticket";
+                        lb_message.Text = "Your flight in wait list";
                         double total_money = 0;
                         foreach (int a in list_temp)
                         {
@@ -74,7 +74,7 @@ namespace Lab4PRN.View
                 else
                 {
                    
-                        lb_message.Text = "You have no flight to pay";
+                        lb_message.Text = "You have no flight in wait list to pay";
                         btnPay.Enabled = false;
                         txt_feed_back.Enabled = false;
                     

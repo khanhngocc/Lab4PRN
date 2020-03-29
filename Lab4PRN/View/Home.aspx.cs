@@ -30,9 +30,20 @@ namespace Lab4PRN.View
         }
 
 
+        public void RefreshPage()
+        {
+          
+            txt_arrival_country.Text = "";
+            txt_depart_country.Text = "";
+            isAll = true;
+            pageIndex = 1;
+            loadData();
+         
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            isAll = true;
+           
             if (!IsPostBack)
             {
                
@@ -41,10 +52,9 @@ namespace Lab4PRN.View
                     Account account = (Account)Session["account"];
                     String fullname = "Hello " + account.User.Fname;
                     lb_fullname.Text = fullname;
+                    isAll = true;
+                    loadData();
                     
-                    
-                        loadData();
-                        LoadPageNumber();
                  }
                 else
                 {
@@ -61,6 +71,7 @@ namespace Lab4PRN.View
             tableTicket.DataBind();
             int rowCount = flightDAO.GetRowCountAllFlight();
             caculatePageCount(rowCount);
+            LoadPageNumber();
         }
 
         public void caculatePageCount(int rowCount)
@@ -93,12 +104,12 @@ namespace Lab4PRN.View
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if(isAll == true)
+           if(isAll == true)
             {
-                pageIndex = 1;
                 isAll = false;
+               
             }
-            
+            pageIndex = 1;
             loadDataFilter();
            
         }
@@ -138,6 +149,21 @@ namespace Lab4PRN.View
 
             pageNumberList.SelectedValue = pageIndex + "";
 
+        }
+
+        protected void LinkHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void LinkHome_Click1(object sender, EventArgs e)
+        {
+            RefreshPage();
+        }
+
+        protected void linkMyTicket_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("MyTicket.aspx");
         }
     }
 }

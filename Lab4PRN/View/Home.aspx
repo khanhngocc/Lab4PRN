@@ -37,9 +37,13 @@
     <form id="form1" runat="server">
         <div class="container col-11">
             <ul class="nav justify-content-end background_header">
+               <li class="nav-item">
+                   
+                    <asp:LinkButton ID="LinkHome" runat="server" CssClass="nav-link" OnClick="LinkHome_Click1" ><i class="fa fa-home" aria-hidden="true"></i> Home</asp:LinkButton>
+                </li>
                 <li class="nav-item">
                    
-                    <asp:LinkButton ID="linkMyTicket" runat="server" CssClass="nav-link" OnClick="linkMyTicket_Click"><i class="fa fa-ticket" aria-hidden="true"></i> My Ticket</asp:LinkButton>
+                    <asp:LinkButton ID="linkMyTicket" runat="server" CssClass="nav-link" OnClick="linkMyTicket_Click1" ><i class="fa fa-ticket" aria-hidden="true"></i> My Ticket</asp:LinkButton>
                 </li>
                 <li class="nav-item">
                     
@@ -49,7 +53,7 @@
                     <asp:Label ID="lb_fullname" runat="server" CssClass="nav-link"></asp:Label>
                 </li>
                 <li class="nav-item">
-                    <asp:LinkButton ID="linkLogout" runat="server"  CssClass="nav-link" OnClick="linkLogout_Click">LogOut</asp:LinkButton>
+                    <asp:LinkButton ID="linkLogout" runat="server"  CssClass="nav-link" OnClick="linkLogout_Click"><i class="fa fa-sign-out" aria-hidden="true"></i> LogOut</asp:LinkButton>
                 </li>
             </ul>
             <br />

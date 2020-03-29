@@ -19,17 +19,12 @@ namespace Lab4PRN.View
                 if (Session["account"] != null)
                 {
 
-                    if (Session["all_ticket"] != null)
-                    {
-                        lb_message.Text = "You haven't book any flight";
-                    }
-                    else
-                    {
+                   
                         lb_message.Text = "Your flight you booked";
                         Account account = (Account)Session["account"];
                         gridViewTicketBooked.DataSource = flightDAO.GetAllFlightBookedOfUser(account.Id);
                         gridViewTicketBooked.DataBind();
-                    }
+                    
 
                 }
                 else
